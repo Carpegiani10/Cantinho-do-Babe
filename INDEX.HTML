@@ -3,46 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanchonete do Tio</title>
+    <title>Cantinho do Babe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Estilos básicos para a página */
+        /* Estilo geral da página */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        /* Cabeçalho com cor e alinhamento */
-        header {
-            background-color: #ffcc00;
-            padding: 20px;
+            background: url('logo3.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ffffff;
             text-align: center;
         }
 
-        /* Estilo dos títulos e seções */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
         h1 {
+            font-size: 3em;
+            color: #4caf50; /* Mudado para verde */
             margin: 0;
-            font-size: 2em;
+            font-weight: 600;
         }
-        section {
-            padding: 20px;
-            margin: 10px;
+
+        .menu-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .menu-buttons a {
+            padding: 15px 25px;
+            background-color: #006b5f;
+            color: #ffffff;
+            text-decoration: none;
             border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
 
-        /* Cardápio com fundo leve */
-        #menu {
-            background-color: #ffe5b4;
+        .menu-buttons a:hover {
+            background-color: #004d43;
         }
 
-        /* Contato com fundo verde claro */
-        #contato {
-            background-color: #d1e7dd;
+        section {
+            display: none;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333333;
         }
 
-        /* Lista do cardápio */
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #006b5f;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
@@ -50,31 +84,144 @@
 
         li {
             margin: 10px 0;
+            font-size: 1.5em;
+        }
+
+        li .item-name {
+            color: #333333;
+            font-weight: bold;
+        }
+
+        li .item-price {
+            color: #4caf50; /* Mudado para verde */
+            font-weight: bold;
+        }
+
+        /* Estilo para os acompanhamentos */
+        .acompanhamentos-title {
+            font-size: 1.8em;
+            color: #006b5f;
+            margin-top: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .acompanhamentos-list {
+            font-size: 1.3em;
+            color: #333333;
+        }
+
+        /* Botão de WhatsApp */
+        .whatsapp-btn {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20b058;
+        }
+
+        /* Imagem grande */
+        .img-large {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            display: none;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
         }
     </style>
+    <script>
+        function mostrarSecao(id) {
+            document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+            const imagem = document.getElementById('imagem-inicial');
+            imagem.style.display = 'none';
+
+            if (id === 'home') {
+                imagem.style.display = 'block';
+            } else {
+                document.getElementById(id).style.display = "block";
+            }
+        }
+
+        window.onload = function() {
+            mostrarSecao('home');
+        };
+    </script>
 </head>
 <body>
     <header>
-        <h1>Lanchonete do Tio</h1>
-        <p>O melhor lanche da região!</p>
+        <img src="logo.png" alt="Logo Cantinho do Babe" class="logo">
+        <h1>Cantinho do Babe</h1>
+        <p>Descubra o sabor dos melhores lanches!</p>
+
+        <div class="menu-buttons">
+            <a href="#" onclick="mostrarSecao('home')">Início</a>
+            <a href="#" onclick="mostrarSecao('promocoes')">Promoções</a>
+            <a href="#" onclick="mostrarSecao('menu')">Cardápio</a>
+            <a href="#" onclick="mostrarSecao('pedidos')">Pedidos</a>
+        </div>
     </header>
 
-    <!-- Seção do Cardápio -->
-    <section id="menu">
-        <h2>Cardápio</h2>
+    <div id="imagem-inicial">
+        <img src="logo2.jpg" alt="Imagem da Lanchonete" class="img-large">
+    </div>
+
+    <section id="promocoes">
+        <h2>Promoções</h2>
         <ul>
-            <li>Hambúrguer Simples - R$10</li>
-            <li>Hambúrguer com Queijo - R$12</li>
-            <li>Batata Frita - R$5</li>
-            <li>Refrigerante - R$4</li>
+            <li><span class="item-name">Combo Lanche + Coca-Cola 350ml</span> - <span class="item-price">R$25</span></li>
+            <li><span class="item-name">Combo Dogão + Coca-Cola 350ml</span> - <span class="item-price">R$22</span></li>
+            <li><span class="item-name">Combo Pastel + Coca-Cola 350ml</span> - <span class="item-price">R$15</span></li>
+            <li><span class="item-name">Combo Açaí + Pastel</span> - <span class="item-price">R$18</span></li>
         </ul>
     </section>
 
-    <!-- Seção de Contato -->
-    <section id="contato">
-        <h2>Contato</h2>
-        <p>Endereço: Rua das Lanchonetes, 123</p>
-        <p>Telefone: (11) 1234-5678</p>
+    <section id="menu">
+        <h2>Cardápio</h2>
+        <ul>
+            <li><span class="item-name">X-Burguer</span> - <span class="item-price">R$20</span></li>
+            <li><span class="item-name">X-Salada</span> - <span class="item-price">R$22</span></li>
+            <li><span class="item-name">X-Calabresa</span> - <span class="item-price">R$25</span></li>
+            <li><span class="item-name">X-Tudo</span> - <span class="item-price">R$28</span></li>
+            <li><span class="item-name">Dogão Especial</span> - <span class="item-price">R$18</span></li>
+            <li><span class="item-name">Pastel</span> - <span class="item-price">R$10</span></li>
+            <li><span class="item-name">Açaí - 250g</span> - <span class="item-price">R$12</span></li>
+            <li><span class="item-name">Açaí - 500g</span> - <span class="item-price">R$20</span></li>
+        </ul>
+        <p class="acompanhamentos-title">Acompanhamentos</p>
+        <ul class="acompanhamentos-list">
+            <li>Leite em pó</li>
+            <li>Granola</li>
+            <li>Banana</li>
+            <li>Leite condensado</li>
+        </ul>
     </section>
+
+    <section id="pedidos">
+        <h2>Pedidos</h2>
+        <p>Para fazer seu pedido, entre em contato pelo WhatsApp:</p>
+        <a href="https://api.whatsapp.com/send?phone=47997010669" class="whatsapp-btn">Fale pelo WhatsApp!</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Cantinho do Babe. Todos os direitos reservados.</p>
+        <p>Endereço: R. Arthur Manoel C. Correia, 54 - Cedros, Camboriú - SC, 88340-000</p>
+        <p>Telefone: <a href="tel:47997010669" style="color: #ffffff;">47 9 97010669</a></p>
+    </footer>
 </body>
 </html>
